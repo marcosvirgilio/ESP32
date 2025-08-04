@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <WebServer.h>
 
-// === Replace with your Wi-Fi credentials ===
-const char* ssid = "G75-MVC";
-const char* password = "Valen666";
+// === Rede Wi-Fi ===
+const char* ssid = "nome_da_rede";
+const char* password = "senha_da_rede";
 
 // === Pin definitions ===
 #define LED_BUILTIN 2
@@ -56,10 +56,10 @@ void setup() {
   // === Web server endpoint ===
   server.on("/", []() {
     String html = "<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1'>";
-    html += "<title>ESP32 Flow Sensor</title></head><body>";
-    html += "<h1>ESP32 Flow Sensor Monitor</h1>";
-    html += "<p><strong>Flow rate:</strong> " + String(flowRate, 2) + " L/min</p>";
-    html += "<p><strong>Total Volume:</strong> " + String(totalMilliLitres) + " mL (" + String(totalMilliLitres / 1000.0, 2) + " L)</p>";
+    html += "<title>Casa Inteligente</title></head><body>";
+    html += "<h1>Sensor de Fluxo</h1>";
+    html += "<p><strong>Volume atual:</strong> " + String(flowRate, 2) + " litros/minuto</p>";
+    html += "<p><strong>Volume acumulado:</strong> " + String(totalMilliLitres) + " ml (" + String(totalMilliLitres / 1000.0, 2) + " Litros)</p>";
     html += "</body></html>";
     server.send(200, "text/html", html);
   });
